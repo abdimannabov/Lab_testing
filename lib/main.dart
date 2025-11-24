@@ -3,9 +3,13 @@ import 'package:flutter/material.dart';
 import 'crash_example.dart';
 
 void main() {
+  // Avoid calling printName() on a User with no name at app startup.
+  // If diagnostic printing is desired, assign a default name or call
+  // in a safe context after initialization.
   final user = User();
+  user.name = 'Guest';
   user.printName();
-  
+
   runApp(const MyApp());
 }
 
@@ -44,9 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Counter App'),
-      ),
+      appBar: AppBar(title: const Text('Counter App')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

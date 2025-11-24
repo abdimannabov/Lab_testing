@@ -9,6 +9,11 @@ class ProfileManager {
   UserProfile? profile;
 
   String getWelcomeMessage() {
-    return "Welcome ${profile!.name!}";
+    // Avoid force-unwrapping profile or name. Provide a safe default.
+    final displayName = profile?.name;
+    final safeName = (displayName != null && displayName.isNotEmpty)
+        ? displayName
+        : 'Guest';
+    return "Welcome $safeName";
   }
 }
