@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'crash_example.dart';
+
 void main() {
+  final user = User();
+  user.printName();
+  
   runApp(const MyApp());
 }
 
